@@ -10,7 +10,7 @@
 + Change the path and Ip address in client.py
 + Run the speedTest.py
 
-+ //Currently, our private server is not maintained.
++ Currently, our private server is not maintained.
 
 ## Bandwidth Estimation
 + set server_es.py on the remote server
