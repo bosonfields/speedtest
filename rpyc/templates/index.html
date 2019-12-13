@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>SpeedTest</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!--<link rel="stylesheet" href="../static/index.css">-->
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+            integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href='{{ url_for('static',filename='index.css' ) }}'/>
+
+
+</head>
+
+<body>
+<div class="container ">
+
+    <div class="content">
+        <h1>Speed Test</h1>
+        <hr>
+    </div>
+    <div class="row">
+        <div class="col-4">
+{#            <h4 id="ping">PING/ms:</h4>#}
+{#            <div class="progress">#}
+{#                <div class="progress-bar bg-warning" role="progressbar" style="width: 25%" aria-valuenow="25"#}
+{#                     aria-valuemin="0" aria-valuemax="100"></div>#}
+{#            </div>#}
+
+            <h4 id="download">DOWNLOAD/Mbps </h4>
+            <div class="progress">
+                <div class="progress-bar bg-warning" role="progressbar" style="width: 50%" aria-valuenow="50"
+                     aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+
+            <h4 id="upload">UPLOAD/Mbps</h4>
+            <div class="progress">
+                <div class="progress-bar bg-warning" role="progressbar" style="width: 75%" aria-valuenow="75"
+                     aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+
+        </div>
+        <div class="col-4 d-flex flex-column align-items-center">
+            <canvas id="canvas" width="310" height="310" data-score="456"></canvas>
+            <div>
+                <button type="button" id="go" class="btn btn-dark btn-lg"><i
+                        class="fas fa-tachometer-alt"></i>Go
+                </button>
+            </div>
+        </div>
+        <div class="col-4">
+            <h4>Public IP: <span id="ip"></span></h4>
+            <h4>Location: <span id="location"></span></h4>
+            <h4>ISP: <span id="isp"></span></h4>
+
+        </div>
+    </div>
+{#    <button id="getDNS">GET DNS </button>#}
+    <table border="1">
+        <tr>
+            <th>DNS\Domain</th>
+            <th>google.com</th>
+            <th>rutgers.edu</th>
+            <th>github.com</th>
+            <th>stackoverflow.com</th>
+            <th>wikipedia.org</th>
+        </tr>
+         {% for row in dns %}
+            <tr>
+
+            {% for ele in row %}
+                {% if loop.index==1 %}
+                    <td> {{ ele }}</td>
+
+
+                {% else  %}
+                     <td> {{ ele }}ms </td>
+
+                {% endif %}
+
+            {%  endfor %}
+                    <td><input type="checkbox" id="check_{{ loop.index }}" value=" {{ row[0] }}"></td>
+            </tr>
+         {% endfor %}
+    </table>
+    <button id="setDNS">Set DNS</button>
+    {%  if info %}
+        <p> Default Gateway: {{  info[0]}}</p>
+        <p> MAC Address: {{  info[2]}}</p>
+        <p>IPv4 Address: {{  info[3]}}</p>
+        <p>Subnet Mask: {{  info[4]}}</p>
+    {% endif %}
+
+
+
+
+</div>
+
+</div>
+
+
+{# <script type="text/javascript" src="/static/index.js"></script>#}
+<script src="{{ url_for('static', filename='index.js') }}"></script>
+
+<script src="https://kit.fontawesome.com/1826910216.js" crossorigin="anonymous"></script>
+
+<!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+<!--<script src="index.js"></script>-->
+
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
+
+</body>
+
+</html>
