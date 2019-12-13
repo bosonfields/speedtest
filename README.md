@@ -1,9 +1,9 @@
 # speedtest
 
 ## Testing with python socket
-set server_ilab.py on the remote server
-set client_ilab.py on the local client
-Change the IP address with the server IP, and the path for test file.
+set server_ilab.py on the remote server //
+set client_ilab.py on the local client //
+Change the IP address with the server IP, and the path for test file. //
 
 ## Testing with python rpyc
 set server_rpyc.py on the remote server
